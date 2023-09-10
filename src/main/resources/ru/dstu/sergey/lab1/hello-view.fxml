@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dstu.sergey.lab1.controllers.HelloController">
+   <children>
+      <Button layoutX="49.0" layoutY="60.0" mnemonicParsing="false" onAction="#firstPage" text="1 задание" />
+      <Button layoutX="129.0" layoutY="60.0" mnemonicParsing="false" onAction="#secondPage" text="2 задание" />
+      <Button layoutX="209.0" layoutY="60.0" mnemonicParsing="false" onAction="#thirdPage" text="3 задание" />
+      <Button layoutX="289.0" layoutY="60.0" mnemonicParsing="false" onAction="#fourthPage" text="4 задание" />
+      <Button layoutX="368.0" layoutY="60.0" mnemonicParsing="false" onAction="#fifthPage" text="5 задание" />
+   </children>
+</AnchorPane>
