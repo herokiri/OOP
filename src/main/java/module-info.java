@@ -1,6 +1,8 @@
 module ru.dstu.sergey.lab1 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
+    requires javafx.swing;
 
 
     opens ru.dstu.sergey.lab1 to javafx.fxml;
