@@ -16,6 +16,7 @@ public class Main extends Application {
     private static Scene scene1;
     private static Scene scene2;
     private static Scene scene3;
+    private static Scene scene4;
 
 
 
@@ -37,9 +38,17 @@ public class Main extends Application {
         Parent page3 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseTwo-view.fxml")));
         scene3 = new Scene(page3);
 
+        Parent page4 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseThree-view.fxml")));
+        scene4 = new Scene(page4);
+
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Лабораторная работа #1");
         primaryStage.show();
+    }
+
+    public static void switchToExerciseThree() {
+        primaryStage.setScene(scene4);
+        primaryStage.setTitle("Задание #3");
     }
 
     public static void switchToExerciseTwo() {

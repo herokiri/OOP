@@ -21,7 +21,7 @@ public class HelloController {
     }
 
     public void thirdPage(ActionEvent actionEvent) {
-
+        Main.switchToExerciseThree();
     }
 
     public void fourthPage(ActionEvent actionEvent) {

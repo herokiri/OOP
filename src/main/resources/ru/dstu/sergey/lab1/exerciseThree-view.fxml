@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="476.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dstu.sergey.lab1.controllers.ExerciseThreeController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Вернуться назад" />
+      <AnchorPane layoutX="349.0" prefHeight="476.0" prefWidth="251.0">
+         <children>
+            <TitledPane animated="false" layoutX="14.0" layoutY="14.0" prefHeight="296.0" prefWidth="79.0" text="Палитра">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="78.0">
+                     <children>
+                        <GridPane layoutX="9.0" layoutY="15.0" prefHeight="230.0" prefWidth="58.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="71.20000610351562" minHeight="10.0" prefHeight="71.20000610351562" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="90.40001220703127" minHeight="10.0" prefHeight="73.59999389648439" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="72.00000610351562" minHeight="10.0" prefHeight="45.59998779296876" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ToggleButton fx:id="squareElement" mnemonicParsing="false" onAction="#SquareElementButton" prefHeight="72.0" prefWidth="58.0" GridPane.rowIndex="2" />
+                              <ToggleButton fx:id="lineElement" mnemonicParsing="false" onAction="#LineElementButton" prefHeight="66.0" prefWidth="58.0" />
+                              <ToggleButton fx:id="circleElement" mnemonicParsing="false" onAction="#СircleElementButton" prefHeight="68.0" prefWidth="58.0" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <ColorPicker fx:id="colorContour" layoutX="103.0" layoutY="39.0" />
+            <Text layoutX="103.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цвет контура" />
+            <Text layoutX="103.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цвет заливки" />
+            <ColorPicker fx:id="fillColor" layoutX="103.0" layoutY="104.0" />
+            <TitledPane animated="false" layoutX="103.0" layoutY="141.0" prefHeight="169.0" prefWidth="126.0" text="Контур">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="125.0">
+                     <children>
+                        <TextField fx:id="thickness" layoutX="9.0" layoutY="35.0" prefHeight="26.0" prefWidth="106.0" />
+                        <ChoiceBox fx:id="type" layoutX="9.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" />
+                        <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Толщина" />
+                        <Text layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Тип" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="18.0" layoutY="325.0" prefHeight="138.0" prefWidth="215.0" text="Размер изображения">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="123.0" prefWidth="214.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ширина" />
+                        <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Высота" />
+                        <TextField fx:id="widthImg" layoutX="65.0" layoutY="22.0" prefHeight="26.0" prefWidth="137.0" />
+                        <TextField fx:id="heightImg" layoutX="65.0" layoutY="58.0" prefHeight="26.0" prefWidth="137.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="mainPane" layoutX="14.0" layoutY="46.0" onMouseClicked="#mainPaneClicked" prefHeight="413.0" prefWidth="342.0" />
+   </children>
+</AnchorPane>

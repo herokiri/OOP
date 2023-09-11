@@ -64,7 +64,6 @@ public class ExerciseOneController {
         newImageView.setLayoutX(mouseEvent.getX());
         newImageView.setLayoutY(mouseEvent.getY());
         mainPane.getChildren().add(newImageView);
-
     }
 
     public void imgButtonClicked(MouseEvent actionEvent) {
