@@ -79,14 +79,6 @@ public class ExerciseOneController {
             }
         }
     }
-
-    private Button createSaveButton() {
-        Button saveButton = new Button("Save");
-        saveButton.setOnAction(event -> handleSaveButtonClick());
-
-        return saveButton;
-    }
-
     @FXML
     private void handleSaveButtonClick() {
         FileChooser fileChooser = new FileChooser();
