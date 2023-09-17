@@ -29,5 +29,6 @@ public class HelloController {
     }
 
     public void fifthPage(ActionEvent actionEvent) {
+        Main.switchToExerciseFive();
     }
 }

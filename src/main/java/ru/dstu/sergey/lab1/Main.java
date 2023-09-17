@@ -18,8 +18,7 @@ public class Main extends Application {
     private static Scene scene3;
     private static Scene scene4;
     private static Scene scene5;
-
-
+    private static Scene scene6;
 
     public static void main(String[] args) {
         launch(args);
@@ -45,11 +44,18 @@ public class Main extends Application {
         Parent page5 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseFour-view.fxml")));
         scene5 = new Scene(page5);
 
+        Parent page6 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseFive-view.fxml")));
+        scene6 = new Scene(page6);
+
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Лабораторная работа #1");
         primaryStage.show();
     }
 
+    public static void switchToExerciseFive() {
+        primaryStage.setScene(scene6);
+        primaryStage.setTitle("Задание #4");
+    }
     public static void switchToExerciseFour() {
         primaryStage.setScene(scene5);
         primaryStage.setTitle("Задание #4");

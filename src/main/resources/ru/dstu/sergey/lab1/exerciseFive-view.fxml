@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.util.converter.IntegerStringConverter?>
+
+<AnchorPane prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dstu.sergey.lab1.controllers.ExerciseFiveController">
+    <children>
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Вернуться назад" />
+        <TableView fx:id="tableView" layoutX="14.0" layoutY="50.0" prefHeight="310.0" prefWidth="572.0">
+            <columns>
+                <TableColumn fx:id="languageColumn" prefWidth="200.0" text="Язык" editable="true" />
+                <TableColumn fx:id="authorColumn" prefWidth="200.0" text="Автор" editable="true" />
+                <TableColumn fx:id="yearColumn" prefWidth="167.20001220703125" text="Год" editable="true" />
+            </columns>
+        </TableView>
+        <Button layoutX="14.0" layoutY="418.0" mnemonicParsing="false" onAction="#addLanguage" text="Добавить язык" />
+        <Text layoutX="121.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Язык : " />
+        <TextField fx:id="language" layoutX="159.0" layoutY="418.0" prefHeight="26.0" prefWidth="84.0" />
+        <Text layoutX="252.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор : " />
+        <TextField fx:id="author" layoutX="294.0" layoutY="418.0" prefHeight="26.0" prefWidth="84.0" />
+        <Text layoutX="393.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Год : " />
+        <TextField fx:id="year" layoutX="429.0" layoutY="418.0" prefHeight="26.0" prefWidth="84.0" />
+
+        <CheckBox layoutX="14.0" layoutY="376.0" onAction="#toggleLanguageColumn" selected="true" text="Show Language" />
+        <CheckBox layoutX="150.0" layoutY="376.0" onAction="#toggleAuthorColumn" selected="true" text="Show Author" />
+        <CheckBox layoutX="300.0" layoutY="376.0" onAction="#toggleYearColumn" selected="true" text="Show Year" />
+    </children>
+</AnchorPane>
