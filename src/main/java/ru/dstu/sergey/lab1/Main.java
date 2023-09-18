@@ -19,10 +19,13 @@ public class Main extends Application {
     private static Scene scene4;
     private static Scene scene5;
     private static Scene scene6;
+    private static Scene scene7;
+    private static Scene scene8;
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -47,14 +50,30 @@ public class Main extends Application {
         Parent page6 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseFive-view.fxml")));
         scene6 = new Scene(page6);
 
+        Parent page7 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseSix-view.fxml")));
+        scene7 = new Scene(page7);
+
+        Parent page8 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("exerciseSeven-view.fxml")));
+        scene8 = new Scene(page8);
+
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Лабораторная работа #1");
         primaryStage.show();
     }
 
+    public static void switchToExerciseSeven() {
+        primaryStage.setScene(scene8);
+        primaryStage.setTitle("Задание #7");
+    }
+
+    public static void switchToExerciseSix() {
+        primaryStage.setScene(scene7);
+        primaryStage.setTitle("Задание #6");
+    }
+
     public static void switchToExerciseFive() {
         primaryStage.setScene(scene6);
-        primaryStage.setTitle("Задание #4");
+        primaryStage.setTitle("Задание #5");
     }
     public static void switchToExerciseFour() {
         primaryStage.setScene(scene5);

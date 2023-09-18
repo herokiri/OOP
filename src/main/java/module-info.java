@@ -3,6 +3,7 @@ module ru.dstu.sergey.lab1 {
     requires javafx.fxml;
     requires java.desktop;
     requires javafx.swing;
+    requires javafx.media;
 
 
     opens ru.dstu.sergey.lab1 to javafx.fxml;

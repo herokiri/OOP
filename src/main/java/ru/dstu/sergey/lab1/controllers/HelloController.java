@@ -31,4 +31,11 @@ public class HelloController {
     public void fifthPage(ActionEvent actionEvent) {
         Main.switchToExerciseFive();
     }
+    public void sixthPage(ActionEvent actionEvent) {
+        Main.switchToExerciseSix();
+    }
+
+    public void seventh(ActionEvent actionEvent) {
+        Main.switchToExerciseSeven();
+    }
 }
