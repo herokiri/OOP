@@ -46,16 +46,16 @@ public class ExerciseTwoController {
         System.out.println(keyCode);
 
         switch (keyCode) {
-            case UP:
+            case W:
                 currentShape.moveUp();
                 break;
-            case DOWN:
+            case S:
                 currentShape.moveDown();
                 break;
-            case LEFT:
+            case A:
                 currentShape.moveLeft();
                 break;
-            case RIGHT:
+            case D:
                 currentShape.moveRight();
                 break;
             case EQUALS:

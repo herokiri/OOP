@@ -15,11 +15,11 @@ public class ExerciseFourController {
     public TextField widthA;
     public TextField minA;
     public TextField maxA;
+    public TextField shagA;
     @FXML
     private ToggleGroup visibilityToggleGroup;
     @FXML
     private RadioButton showButton;
-
     @FXML
     private RadioButton hideButton;
     public MenuButton choiseFunction;
@@ -29,10 +29,10 @@ public class ExerciseFourController {
     XYChart.Series<Number, Number> sinXSquareSeries = new XYChart.Series<>();
     XYChart.Series<Number, Number> cosSeries = new XYChart.Series<>();
 
-    Function function1 = new Function("-6", "6", "1", false);
-    Function function2 = new Function("-6", "6", "1", false);
+    Function cosMinus = new Function("-6", "6", "1", false);
+    Function sinXSquare = new Function("-6", "6", "1", false);
 
-    Function function3 = new Function("-6", "6", "1", false);
+    Function cos = new Function("-6", "6", "1", false);
 
     private XYChart.Series<Number, Number> selectedSeries;
 
@@ -41,6 +41,7 @@ public class ExerciseFourController {
         widthA.setText("1");
         maxA.setText("6");
         minA.setText("-6");
+        shagA.setText("0.1");
 
         visibilityToggleGroup = new ToggleGroup();
         showButton.setToggleGroup(visibilityToggleGroup);
@@ -59,47 +60,46 @@ public class ExerciseFourController {
         // Create a series for the function y(x) = cos(x)
         cosSeries.setName("y(x) = cos(x)");
 
-        // Add data points to the series
-        for (double x = -2 * Math.PI; x <= 2 * Math.PI; x += 0.1) {
-            double y1 = Math.cos(x) - 2 * Math.sin(x);
-            double y2 = Math.sin(x * x);
-            double y3 = Math.cos(x);
-            cosMinus2SinSeries.getData().add(new XYChart.Data<>(x, y1));
-            sinXSquareSeries.getData().add(new XYChart.Data<>(x, y2));
-            cosSeries.getData().add(new XYChart.Data<>(x, y3));
-        }
-
         lineChart.setCreateSymbols(false);
         lineChart.getData().addAll(cosMinus2SinSeries, sinXSquareSeries, cosSeries);
         selectedSeries = cosSeries;
-
-
     }
 
     public void function1Clicked(ActionEvent actionEvent) {
         choiseFunction.setText("y(x) = sin(x ^ 2)");
-        minA.setText(function1.getMin());
-        maxA.setText(function1.getMax());
-        widthA.setText(function1.getWidth());
-        showButton.setSelected(function1.isVisible());
+        minA.setText(sinXSquare.getMin());
+        maxA.setText(sinXSquare.getMax());
+        widthA.setText(sinXSquare.getWidth());
+
+        shagA.setText(sinXSquare.getShag());
+
+        showButton.setSelected(sinXSquare.isVisible());
+        hideButton.setSelected(!sinXSquare.isVisible());
         selectedSeries = sinXSquareSeries;
     }
 
     public void function2Clicked(ActionEvent actionEvent) {
         choiseFunction.setText("y(x) = cos(x) - 2*sin(x)");
-        minA.setText(function2.getMin());
-        maxA.setText(function2.getMax());
-        widthA.setText(function2.getWidth());
-        showButton.setSelected(function2.isVisible());
+        minA.setText(cosMinus.getMin());
+        maxA.setText(cosMinus.getMax());
+        widthA.setText(cosMinus.getWidth());
+
+        shagA.setText(cosMinus.getShag());
+
+        showButton.setSelected(cosMinus.isVisible());
+        hideButton.setSelected(!cosMinus.isVisible());
         selectedSeries = cosMinus2SinSeries;
     }
 
     public void function3Clicked(ActionEvent actionEvent) {
         choiseFunction.setText("y(x) = cos(x)");
-        minA.setText(function3.getMin());
-        maxA.setText(function3.getMax());
-        widthA.setText(function3.getWidth());
-        showButton.setSelected(function3.isVisible());
+        minA.setText(cos.getMin());
+        maxA.setText(cos.getMax());
+        widthA.setText(cos.getWidth());
+        shagA.setText(cos.getShag());
+
+        showButton.setSelected(cos.isVisible());
+        hideButton.setSelected(!cos.isVisible());
         selectedSeries = cosSeries;
     }
 
@@ -108,59 +108,84 @@ public class ExerciseFourController {
         Main.switchToMain();
     }
 
-    public void updateMinValue(ActionEvent inputMethodEvent) {
-        if (selectedSeries.equals(cosSeries)) {
-            function3.setMin(minA.getText());
-        } else if(selectedSeries.equals(cosMinus2SinSeries)) {
-            function2.setMin(minA.getText());
-        }
-        else if(selectedSeries.equals(sinXSquareSeries)) {
-            function1.setMin((minA.getText()));
-        }
-    }
-
-    public void updateMaxValue(ActionEvent inputMethodEvent) {
-
-        if (selectedSeries.equals(cosSeries)) {
-            function3.setMax(maxA.getText());
-        } else if (selectedSeries.equals(cosMinus2SinSeries)) {
-            function2.setMax(maxA.getText());
-        } else if (selectedSeries.equals(sinXSquareSeries)) {
-            function1.setMax(maxA.getText());
-        }
-    }
-
-    public void updateWidthValue(ActionEvent inputMethodEvent) {
-        if (selectedSeries.equals(cosSeries)) {
-            function3.setWidth(widthA.getText());
-        } else if (selectedSeries.equals(cosMinus2SinSeries)) {
-            function2.setWidth(widthA.getText());
-        } else if (selectedSeries.equals(sinXSquareSeries)) {
-            function1.setWidth(widthA.getText());
-        }
-    }
 
     public void updateVisible(ActionEvent actionEvent) {
-        if (showButton.isVisible()) {
-            if (selectedSeries.equals(cosSeries)) {
-                System.out.println("cos");
-                function3.setVisible(true);
-            } else if (selectedSeries.equals(cosMinus2SinSeries)) {
-                System.out.println("cosMinus2ssin");
-                function2.setVisible(true);
-            } else if (selectedSeries.equals(sinXSquareSeries)) {
-                System.out.println("sin(x ^ 2)");
-                function1.setVisible(true);
+        if (selectedSeries.equals(cosMinus2SinSeries)) {
+            cosMinus.setVisible(!hideButton.isSelected());
+            updateFunction();
+        }
+        else if(selectedSeries.equals(sinXSquareSeries)) {
+            sinXSquare.setVisible(!hideButton.isSelected());
+            updateFunction();
+        }
+        else {
+            cos.setVisible((!hideButton.isSelected()));
+            updateFunction();
+        }
+
+        cosMinus2SinSeries.getNode().setVisible(cosMinus.isVisible());
+        sinXSquareSeries.getNode().setVisible(sinXSquare.isVisible());
+        cosSeries.getNode().setVisible(cos.isVisible());
+    }
+
+    @FXML
+    private void updateInf(ActionEvent actionEvent) {
+        updateFunction();
+    }
+
+    private void updateFunction() {
+        double minWidth = Double.parseDouble(minA.getText());
+        double maxWidth = Double.parseDouble(maxA.getText());
+        double width = Double.parseDouble(widthA.getText());
+        double shag = Double.parseDouble(shagA.getText());
+
+        selectedSeries.getData().clear();
+
+        if (selectedSeries.equals(cosMinus2SinSeries)) {
+
+            showButton.setSelected(cosMinus.isVisible());
+            cosMinus.setMin(String.valueOf(minWidth));
+            cosMinus.setMax(String.valueOf(maxWidth));
+            cosMinus.setWidth(String.valueOf(width));
+            cosMinus.setShag(String.valueOf(shag));
+
+            //for (double x = minWidth; x <= maxWidth; x += shag)
+            for (double x = minWidth; x <= maxWidth; x += shag) {
+                double y = Math.cos(x) - 2 * Math.sin(x);
+                selectedSeries.getData().add(new XYChart.Data<>(x, y));
             }
-        } else {
-            if (selectedSeries.equals(cosSeries)) {
-                System.out.println("cos");
-                function3.setVisible(false);
-            } else if (selectedSeries.equals(cosMinus2SinSeries)) {
-                function2.setVisible(false);
-            } else if (selectedSeries.equals(sinXSquareSeries)) {
-                function1.setVisible(false);
+
+            cosMinus2SinSeries.getNode().setStyle("-fx-stroke-width: " + width + "px;");
+        }
+        else if(selectedSeries.equals(sinXSquareSeries)) {
+
+            showButton.setSelected(sinXSquare.isVisible());
+            sinXSquare.setMin(String.valueOf(minWidth));
+            sinXSquare.setMax(String.valueOf(maxWidth));
+            sinXSquare.setWidth(String.valueOf(width));
+            sinXSquare.setShag(String.valueOf(shag));
+
+            for (double x = minWidth; x <= maxWidth; x += shag) {
+                double y = Math.sin(x * x);
+                selectedSeries.getData().add(new XYChart.Data<>(x, y));
             }
+
+            sinXSquareSeries.getNode().setStyle("-fx-stroke-width: " + width + "px;");
+        }
+        else {
+
+            showButton.setSelected(cos.isVisible());
+            cos.setMin(String.valueOf(minWidth));
+            cos.setMax(String.valueOf(maxWidth));
+            cos.setWidth(String.valueOf(width));
+
+            cos.setShag(String.valueOf(shag));
+
+            for (double x = minWidth; x <= maxWidth; x += shag) {
+                double y = Math.cos(x);
+                selectedSeries.getData().add(new XYChart.Data<>(x, y));
+            } // Set your desired stroke width
+            cosSeries.getNode().setStyle("-fx-stroke-width: " + width + "px;");
         }
     }
 }

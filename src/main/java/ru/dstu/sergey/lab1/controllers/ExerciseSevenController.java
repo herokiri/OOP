@@ -1,5 +1,6 @@
 package ru.dstu.sergey.lab1.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -9,6 +10,7 @@ import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import ru.dstu.sergey.lab1.Main;
 
 import java.io.File;
 
@@ -89,5 +91,10 @@ public class ExerciseSevenController {
         int minutes = (int) duration.toMinutes();
         int seconds = (int) (duration.toSeconds() % 60);
         return String.format("%02d:%02d", minutes, seconds);
+    }
+
+
+    public void backButton(ActionEvent actionEvent) {
+        Main.switchToMain();
     }
 }

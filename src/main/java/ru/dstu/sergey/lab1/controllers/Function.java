@@ -4,6 +4,7 @@ public class Function {
     private String min = "-6";
     private String max = "6";
     private String width = "1";
+    private String shag = "0.1";
     private boolean isVisible = false;
 
     public Function(String min, String max, String width, boolean isVisible) {
@@ -13,6 +14,14 @@ public class Function {
         this.isVisible = isVisible;
     }
 
+
+    public String getShag() {
+        return shag;
+    }
+
+    public void setShag(String shag) {
+        this.shag = shag;
+    }
 
     public boolean isVisible() {
         return isVisible;
