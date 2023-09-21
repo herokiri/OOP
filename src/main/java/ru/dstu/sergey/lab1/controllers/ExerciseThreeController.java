@@ -16,12 +16,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Transform;
 import javafx.stage.FileChooser;
 import ru.dstu.sergey.lab1.Main;
 import javafx.scene.shape.Shape;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
@@ -272,18 +274,32 @@ public class ExerciseThreeController {
     @FXML
     private void handleSaveButtonClick() {
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extensionFilter);
+        FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+        FileChooser.ExtensionFilter jpgFilter = new FileChooser.ExtensionFilter("JPEG files (*.jpg)", "*.jpg");
+        fileChooser.getExtensionFilters().addAll(pngFilter, jpgFilter);
 
         File file = fileChooser.showSaveDialog(mainPane.getScene().getWindow());
         if (file != null) {
             try {
-                // Создаем снимок содержимого mainPane
+                int width = Integer.parseInt(widthImg.getText());
+                int height = Integer.parseInt(heightImg.getText());
+
+                // Создаем снимок содержимого mainPane с указанными размерами
                 SnapshotParameters parameters = new SnapshotParameters();
+                parameters.setTransform(Transform.scale(width / mainPane.getWidth(), height / mainPane.getHeight()));
                 WritableImage snapshot = mainPane.snapshot(parameters, null);
 
-                // Сохраняем снимок в файл
-                ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file);
+                // Определяем формат изображения в зависимости от выбора пользователя
+                String extension;
+                if (fileChooser.getSelectedExtensionFilter() == pngFilter) {
+                    extension = "png";
+                } else {
+                    extension = "jpg";
+                }
+
+                // Сохраняем снимок в файл с выбранным форматом и размерами
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(snapshot, null);
+                ImageIO.write(bufferedImage, extension, file);
 
                 System.out.println("Файл сохранен: " + file.getAbsolutePath());
             } catch (IOException e) {
@@ -291,4 +307,5 @@ public class ExerciseThreeController {
             }
         }
     }
+
 }
